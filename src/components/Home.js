@@ -1,7 +1,14 @@
 import React from 'react';
 import Cartao from './Cartao';
+import styled from 'styled-components'
 
-
+const CarrinhoDiv = styled.div`
+    border: groove;
+    border-color: rgba(136,34,136, 0.8);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;  
+`
 
 export class Home extends React.Component {
 
@@ -99,7 +106,6 @@ export class Home extends React.Component {
                   <Cartao foto={produto.ImageUrl} valor={produto.value} nome={produto.name} adicionar={()=> this.adicionarAoCarrinho(produto.id)} />
                 ) 
               }
-
             </div>
         );
 
