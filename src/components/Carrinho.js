@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Home from './Home';
+;
 
 const CarrinhoDiv = styled.div`
     border: groove;
@@ -10,6 +10,8 @@ const CarrinhoDiv = styled.div`
     justify-content: flex-end;  
 `
 
+
+
 export default class Carrinho extends React.Component {
 
     
@@ -18,7 +20,7 @@ export default class Carrinho extends React.Component {
             <div>
                 <CarrinhoDiv>
                     <h2>Carrinho</h2>
-                    <h4>Valor Total:</h4>
+                    <h4>Valor Total:</h4>        
                 </CarrinhoDiv>
             </div>
         )
