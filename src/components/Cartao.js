@@ -23,8 +23,6 @@ background-color: #FFFFFF;
 `
 
 const Card = styled.div`
-
-
 box-shadow: 2px 2px 4px rgba(136,34,136, 1);
 padding: 0.4em 0;
 
@@ -33,16 +31,18 @@ padding: 0.4em 0;
 export default class Cartao extends React.Component {
   
   render() {  
+    
+    const produto = this.props.produtos
 
     return (
             
             <div className="Cartao">
               
               <Card>
-                <img src={this.props.foto} />
-                <div>R$ {this.props.valor}</div>
-                <div>{this.props.nome}</div>
-                <Buttons onClick={this.props.adicionar}>Adicionar ao carrinho</Buttons>
+                <img src={produto.ImageUrl} />
+                <div>R$ {produto.value}</div>
+                <div>{produto.name}</div>
+                <Buttons onClick={() => this.props.adicionarAoCarrinho(produto.id)}>Adicionar ao carrinho</Buttons>
               </Card>
               
             </div>
