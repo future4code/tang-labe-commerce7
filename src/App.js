@@ -6,7 +6,7 @@ import Carrinho from './components/Carrinho';
 import styled from 'styled-components';
 import cart2 from './img/cart2.png';
 import Produtos from './components/Produtos'
-
+import Filtros from './components/Filtros'
 
 const BotaoCarrinho = styled.button`
 display: inline-block;
@@ -85,44 +85,28 @@ const produtos = [
 
 
 
-function CarrinhoDeCompras(props) {
-  if (!props.car) {
-    return null;
-  }
-  return (
-    <Carrinho/>
-    
-  );
-}
 
 export default class App extends React.Component {
   state = {
       mostrarCarrinho: false,
-      carrinho: [
-      {
-        id: "",
-        name: "",
-        value: "",
-        ImageUrl: "https://picsum.photos/200/207",
-        quantidade: 1
-      }
-    ],
-    valorMinimoFiltro: 0,
-    valorMaximoFiltro: 0,
-    buscaPeloNome: '',
+      carrinho: [],
+      valorMinimoFiltro: 999,
+      valorMaximoFiltro: 0,
+      buscaPeloNome: ''
   }  
 
-
-  constructor(props) {
-    super(props);
-    this.mostrarCarrinhoAoClicar = this.mostrarCarrinhoAoClicar.bind(this);
+  onChangeMinimoFiltro = (event) => {
+    this.setState({valorMinimoFiltro: event.target.value})
   }
 
-  mostrarCarrinhoAoClicar() {
-    this.setState(prevState => ({
-      mostrarCarrinho: !prevState.mostrarCarrinho
-    }));
+  onChangeMaximoFiltro = (event) => {
+    this.setState({valorMaximoFiltro: event.target.value})
   }
+
+  onChangeBuscaPeloNome = (event) => {
+    this.setState({buscaPeloNome: event.target.value})
+  }
+
 
   adicionarAoCarrinho = (id) => {
     const itensNoCarrinho = this.state.carrinho.find(produto => id === produto.id)
@@ -165,16 +149,36 @@ export default class App extends React.Component {
 
   render() {  
 
-    return (
+   
+
+       return (
             
             <div className="App">
               
               <Header/>
 
-              <Produtos produtos={produtos} adicionarAoCarrinho={this.adicionarAoCarrinho} />
-              <Carrinho car={this.state.mostrarCarrinho} carrinho={this.state.carrinho} removerDoCarrinho={this.removerDoCarrinho} />
-              <BotaoCarrinho onClick={this.mostrarCarrinhoAoClicar}><img src={cart2}/></BotaoCarrinho>
+              <Filtros 
+              valorMinimoFiltro={this.state.valorMinimoFiltro} 
+              valorMaximoFiltro={this.state.valorMaximoFiltro} 
+              buscaPeloNome={this.state.buscaPeloNome}
+              onChangeMinimoFiltro={this.onChangeMinimoFiltro}
+              onChangeMaximoFiltro={this.onChangeMaximoFiltro}
+              onChangeBuscaPeloNome={this.onChangeBuscaPeloNome}
+              />
 
+              <Produtos 
+              produtos={produtos} 
+              adicionarAoCarrinho={this.adicionarAoCarrinho}
+              valorMinimoFiltro={this.state.valorMinimoFiltro} 
+              valorMaximoFiltro={this.state.valorMaximoFiltro} 
+              buscaPeloNome={this.state.buscaPeloNome} />
+
+              <Carrinho 
+              carrinho={this.state.carrinho} 
+              removerDoCarrinho={this.removerDoCarrinho} />
+
+              <BotaoCarrinho onClick={this.handleClick}><img src={cart2}/></BotaoCarrinho>
+              
               <Footer />
               
             </div>
