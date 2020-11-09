@@ -4,6 +4,12 @@
   flex-direction: column;
 }
 
+section {
+  display: grid;
+  grid-template-columns: 1fr 4fr 1fr;
+}
+
+
 .Home {
   margin: 1em 0.5em;
   display: grid;
@@ -11,3 +17,15 @@
   gap: 0.5em;
 }
 
+.image {
+
+  width: 2em;
+  
+}
+
+.image-2 {
+
+  width: 1em;
+  margin: 0 0.2em;
+  
+}

@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Cartao from "./Cartao";
 
+
 const Container = styled.div`
   display: flex;
   flex-grow: 3;
@@ -72,6 +73,8 @@ export default class Produtos extends React.Component {
                   <Cartao
                     produtos={produtos}
                     adicionarAoCarrinho={this.props.adicionarAoCarrinho}
+                    votarNegativo={this.props.votarNegativo}
+                    votarPositivo={this.props.votarPositivo}
                   />
                 );
               })}

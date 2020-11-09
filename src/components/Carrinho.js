@@ -7,7 +7,8 @@ const CarrinhoDiv = styled.div`
     border-color: rgba(136,34,136, 0.8);
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;  
+    justify-content: flex-end;
+    margin: 0 1em;  
 `
 const ContainerInterno = styled.div`
   display: flex;
