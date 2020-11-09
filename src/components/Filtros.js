@@ -8,6 +8,7 @@ const FiltroDiv = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: flex-end;  
+    margin 0 1em;
 `
 const ContainerInterno = styled.div`
   display: flex;
